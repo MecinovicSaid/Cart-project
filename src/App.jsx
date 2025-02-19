@@ -1,15 +1,15 @@
 import { useState } from "react";
 import "./App.css";
-import NavBar from './components/NavBar'
-import Home from "./Home";
+import NavBar from './components/NavBar';
+import Home from "./pages/Home";
+import { FilterProvider } from "./components/FilterContext"; 
 
 function App() {
   return (
-    <>
-    <NavBar/>
-      <Home/>
-    
-    </>
+    <FilterProvider> 
+      <NavBar />
+      <Home />
+    </FilterProvider>
   );
 }
 

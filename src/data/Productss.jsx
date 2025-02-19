@@ -1,7 +1,10 @@
 import React from "react";
+import { useFilter } from "../components/FilterContext";
 
 function Products({ searchTerm }) {
-  const namirnice = [
+  const {filter} = useFilter();
+
+  const products = [
     { id: 1, naziv: "Hleb", cena: "120", kolicina: "500g", slika: "https://static.maxi.rs/medias/sys_master/h2a/h61/8834630877214.png", tip: "domaći" },
     { id: 2, naziv: "Mleko", cena: "150", kolicina: "1L", slika: "https://static.maxi.rs/medias/sys_master/h5b/h18/9001838280734.png", tip: "domaći" },
     { id: 3, naziv: "Jaja", cena: "200", kolicina: "10 kom", slika: "https://static.maxi.rs/medias/sys_master/h6a/h98/9045400518686.png", tip: "domaći" },
@@ -32,10 +35,13 @@ function Products({ searchTerm }) {
     { id: 28, naziv: "Suncokretovo seme", cena: "450", kolicina: "500g", slika: "https://static.maxi.rs/medias/sys_master/hde/h80/9107128811550.png", tip: "veštački" },
     { id: 29, naziv: "Bademi", cena: "1200", kolicina: "500g", slika: "https://static.maxi.rs/medias/sys_master/products/hfb/h20/9153806762014.png", tip: "veštački" },
     { id: 30, naziv: "Orasi", cena: "1000", kolicina: "500g", slika: "https://static.maxi.rs/medias/sys_master/h7d/ha6/8990279515742.png", tip: "veštački" }];
+   
+    const filteredByType = filter ? products.filter((product) => product.tip === filter) : products;
+  
 
-  const filteredProducts = namirnice.filter((proizvod) =>
-    proizvod.naziv.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredProducts = searchTerm ? filteredByType.filter((product) => product.naziv.toLowerCase().includes(searchTerm.toLowerCase())) : filteredByType;
+
+
 
   const styles = {
     container: { padding: "20px", textAlign: "center", backgroundColor: "#f8f9fa" },
@@ -63,7 +69,6 @@ function Products({ searchTerm }) {
         <p style={styles.text}>Nema pronađenih proizvoda.</p>
       )}
     </div>
-  );
-}
+  )}
 
 export default Products;

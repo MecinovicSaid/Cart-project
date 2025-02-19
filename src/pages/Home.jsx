@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Input } from '@mui/material'; 
 import { styled } from '@mui/system';
-import Products from './data/Productss';
+import Products from '../data/Productss';
 
 const blue = {
   100: '#DAECFF',
