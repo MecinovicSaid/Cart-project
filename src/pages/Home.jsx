@@ -66,7 +66,7 @@ const styles = {
   },
 };
 
-function Home() {
+function Home({newProducts}) {
   const [searchTerm, setSearchTerm] = React.useState('');
 
   return (

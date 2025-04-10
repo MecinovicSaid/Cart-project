@@ -1,5 +1,24 @@
 import React from "react";
 import { useFilter } from "../components/FilterContext";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import Tooltip from "@mui/material/Tooltip";
+import MenuItem from "@mui/material/MenuItem";
+import AdbIcon from "@mui/icons-material/Adb";
+import { useState } from "react";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Popover from "@mui/material/Popover";
+import Paper from "@mui/material/Paper";
+import { useNavigate } from "react-router-dom";
 
 function Products({ searchTerm }) {
   const {filter} = useFilter();
@@ -63,7 +82,11 @@ function Products({ searchTerm }) {
             <p style={styles.text}>Cena: {proizvod.cena} RSD</p>
             <p style={styles.text}>Količina: {proizvod.kolicina}</p>
             <p style={styles.text}>Tip: {proizvod.tip}</p>
-          </div>
+            <Box sx={{ '& button': { m: 2 } }}>
+
+          <div> <Button variant="contained" size="medium">
+          DODAJ
+        </Button></div></Box></div>
         ))
       ) : (
         <p style={styles.text}>Nema pronađenih proizvoda.</p>

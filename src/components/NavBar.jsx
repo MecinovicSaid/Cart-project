@@ -17,18 +17,22 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Popover from "@mui/material/Popover";
 import Paper from "@mui/material/Paper";
+import { useNavigate } from "react-router-dom";
 import { useFilter } from "./FilterContext";
 
-const pages = ["Products", "Pricing", "Blog"];
+const pages = ["New-Products", "Pricing", "Filters"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
   const [anchorEl, setAnchorEl] = useState(null);
+  const navigate = useNavigate('')
 
   const handlePageClick = (event, page) => {
-    if (page === "Blog") {
+    if (page === "Filters") {
       setAnchorEl(anchorEl ? null : event.currentTarget);
-    }
+    } else if (page === 'New-Products') {
+      navigate("/new-product")
+    } 
   };
 
   const {setFilter} = useFilter();
@@ -49,6 +53,7 @@ function ResponsiveAppBar() {
               variant="h6"
               noWrap
               component="a"
+              onClick={() => navigate("/")}
               href="#app-bar-with-responsive-menu"
               sx={{
                 mr: 2,
